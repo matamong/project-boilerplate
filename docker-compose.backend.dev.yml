@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  backend:
+    container_name: backend-dev
+    ports:
+      - '8000:8000'
+    image: backend-dev
+    working_dir: /app
+    volumes:
+      - ./backend/app:/app
+    command: /bin/bash -c "poetry lock --no-update && poetry install && poetry run gunicorn --workers 4 --worker-class uvicorn.workers.UvicornWorker main:app --chdir /app/app --bind 0.0.0.0:8000 --reload"
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_ENDPOINT=${DB_ENDPOINT}
+      - DB_PORT=${DB_PORT}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - TZ=Asia/Seoul
+      - ENVIRONMENT=${ENVIRONMENT}
+    networks:
+      - main-bridge
+networks:
+  main-bridge:
+    external: true # You should create this network before running the docker-compose file
