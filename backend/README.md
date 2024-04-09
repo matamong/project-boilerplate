@@ -5,6 +5,12 @@
 poetry add <package>
 ```
 
+<br>
+
+# Logging
+`rich` - https://github.com/Textualize/rich
+
+
 # Default Settings
 ## host
 ```text
@@ -26,3 +32,6 @@ poetry add <package>
 # References
 ## docker
 - https://fastapi.tiangolo.com/deployment/docker/
+## db, logging
+- logging: rich
+- https://github.com/grillazz/fastapi-sqlalchemy-asyncpg

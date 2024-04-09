@@ -15,5 +15,7 @@ class Settings(BaseSettings):
     DB_USERNAME: str
     DB_PASSWORD: str
 
+    # Logging
+    LOG_LEVEL: Literal['DEBUG', 'INFO', 'WARNING', 'ERRO', 'CRITICAL'] = 'DEBUG'
 
 settings = Settings()

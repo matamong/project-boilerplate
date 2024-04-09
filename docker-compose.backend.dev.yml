@@ -8,7 +8,8 @@ services:
     working_dir: /app
     volumes:
       - ./backend/app:/app
-    command: /bin/bash -c "poetry lock --no-update && poetry install && poetry run gunicorn --workers 4 --worker-class uvicorn.workers.UvicornWorker main:app --chdir /app/app --bind 0.0.0.0:8000 --reload"
+      - ./backend_log_config.ini:/app/backend_log_config.ini
+    command: /bin/bash -c "poetry lock --no-update && poetry install && poetry run uvicorn --app-dir /app/app main:app --host 0.0.0.0 --port 8000 --log-config /app/backend_log_config.ini --log-level info --reload"
     environment:
       - DB_NAME=${DB_NAME}
       - DB_ENDPOINT=${DB_ENDPOINT}
@@ -17,6 +18,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - TZ=Asia/Seoul
       - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
     networks:
       - main-bridge
 networks:
