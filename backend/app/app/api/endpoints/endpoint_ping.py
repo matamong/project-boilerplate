@@ -4,6 +4,6 @@ from fastapi import APIRouter
 router = APIRouter()
 
 
-@router.get("/hello")
+@router.get("/ping")
 def hello():
-    return {"message": "Hello World"}
+    return {"message": "pong"}
