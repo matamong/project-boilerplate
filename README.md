@@ -54,7 +54,8 @@ docker build -t rag_backend:0.1 -f backend.dockerfile .
 make build_backend
 ```
 ## 2. Create docker network
-You have to set docker compose network name in `.env.dev`.
+You have to set docker compose network name in `.env.dev`. <br>
+default setting is `main-bridge`.
 
 ### A. Basic
 ``` shell
