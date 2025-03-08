@@ -1,4 +1,5 @@
 # Boilerplate
+Hello! This repository is a FastAPI boilerplate project using Docker and Makefile. I primarily created this for myself, but I made it public in case others find it useful! So updates may be slow.😉 <br>
 The following are required:
 - docker
 - Makefile
